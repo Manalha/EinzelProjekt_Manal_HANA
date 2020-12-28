@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contents</title>
+    <!-- Normalize.css makes browsers render all elements more consistently 
+             and in line with modern standards. It precisely targets only the styles
+             that need normalizing -->
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/normalize.css">
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="assets/stylesheets/style.css">
+
+    <link rel="stylesheet " href="//use.fontawesome.com/releases/v5.0.7/css/all.css ">
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <h4>employee_table</h4>
+        </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+                <li>
+                    <a href="contents.html">Contents</a>
+                </li>
+            </ul>
+        
+    
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        </nav>
+    
+        <script src="assets/javascript/main.js"></script>  
+    
+       <!-- Consume JSON API Data with Ajax -->
+        <div class="container2">
+            <div class="table responsive">
+                <p>In case the table contents doesn't appear please try this :</p>
+
+                    Windows:<br/>
+                    Fire below commands in CMD to start a new instance of chrome browser with disabled security<br/>
+                    Go to Chrome folder:<br/>
+                    cd C:\Program Files (x86)\Google\Chrome\Application<br/>
+                    Run below command:<br/>
+                    chrome.exe --disable-web-security --user-data-dir=c:\my-chrome-data\data<br/>
+                    <br/>
+                    MAC OS:<br/>
+                    Run this command in terminal:<br/>
+                    open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_sess_1" --disable-web-security
+                    <br/>Hope this will help both Windows & Mac users!
+                <br/><br/><br/>
+                
+                <table id="employee_table" class="table"style="width:100%">
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Gender</th>
+                        <th>Designation</th>
+                        <th>Age</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+<script>
+    $(document).ready(function(){
+       $.getJSON("assets/data/employee.json", function(data){
+        var employee_data = '';
+        $.each(data, function(key, value){
+            employee_data += '<tr>';
+            employee_data += '<td>'+value.name+'</td>';
+            employee_data += '<td>'+value.address+'</td>';
+            employee_data += '<td>'+value.gender+'</td>';
+            employee_data += '<td>'+value.designation+'</td>';
+            employee_data += '<td>'+value.age+'</td>';
+            employee_data += '</tr>';
+            
+        });
+        $('#employee_table').append(employee_data);
+        }); 
+    });
+</script>   
+       
+
+
+<!--
+        <article class="padding">
+            <h2>Registration</h2><small>The profile information is stored in a cookie. It can be deleted and updated and will remain on site refresh.</small>
+            <form id="infoform" class="infoform" autocomplete="on" name="infoform">
+                <label for="fname">First name:</label><br>
+                <input type="text" id="fname" name="fname" required><br>
+
+                <label for="lname">Last name:</label><br>
+                <input type="text" id="lname" name="lname" required><br>
+
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required><br>
+
+                <label for="age">Age:</label><br>
+                <input type="number" id="age" name="age" required max="130"><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+                <input class="btn-primary" type="button" value="Submit" id="submit_btn" ">
+            </form>
+            <p id="formstatus "></p>
+        </article>
+
+
+        <aside class="padding ">
+            <h2><i class="fas fa-user "></i> My profile</h2><br><br>
+            <label for="fname_label ">First name:</label>          
+             <label id="fname_label "></label><br>
+
+             <label for="lname_label ">Last name:</label>
+             <label id="lname_label "></label><br>
+
+                <label for="age_label ">Age:</label>
+                <label id="age_label "></label><br>
+
+                <label for="email_label ">Email:</label>
+                <label id="email_label "></label><br>
+                <br><br>
+            <button class="btn-primary " id="delete_btn ">Delete Profile</button>
+        </aside>
+        <footer>
+            <p>© Cristian Ciuciu 2020</p>
+        </footer>
+    </main>-->
+ <!--   <script src="assets/javascript/main.js " type="module "></script>  -->
+
+    </body>
+</html>
